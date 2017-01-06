@@ -20,8 +20,8 @@ public class Main {
                 = new AnnotationConfigApplicationContext(ApplicationConfigDao.class);
 
         TeamsRepository repo = ctx.getBean(TeamsRepository.class);
-        String name = repo.findOne(1).getName();
-        System.out.println(name);
+//        String name = repo.findOne(1).getName();
+//        System.out.println(name);
 
     }
 

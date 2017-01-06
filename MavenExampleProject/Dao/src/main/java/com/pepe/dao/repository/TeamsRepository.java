@@ -11,6 +11,7 @@ import org.hibernate.annotations.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author peter
  */
 @Repository
-public interface TeamsRepository extends JpaRepository<Teams, Integer>/*, TeamsRepositoryCustoms*/ { ///<objekt, Typ Idcka>
+public interface TeamsRepository extends JpaRepository<Teams, Integer>, TeamsRepositoryCustom, QueryDslPredicateExecutor  { ///<objekt, Typ Idcka>
 
      ////
 ////   vsetky implementovane metody a moznosti puzitia na tejto stranke
@@ -31,6 +32,8 @@ public interface TeamsRepository extends JpaRepository<Teams, Integer>/*, TeamsR
     
     public List<Teams> findByNameAndSkratka(String name, String skratka); //vyhlada pomocou mena a skratky
 
+    
+    
     @Query("select t.id, LENGTH(t.name) as team_len from Teams t where t.name like ?1%") //// vrati List pole Objekt, poradie parametrov podla selectu
     public List<Object[]> findByNameAsArrayAndSort(String lastname, Sort sort); //////////// do sortu new Sort("{nazov premennej podla ktorej sa sortuje}");
 //    .

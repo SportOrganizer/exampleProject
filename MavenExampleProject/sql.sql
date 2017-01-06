@@ -38,3 +38,4 @@ INSERT INTO PLAYERS (meno,priezvisko,cislo, team_id) VALUES ("tomas","prieboj",1
 Update Teams set kapitan_id = 1 where id = 1;
 Update Teams set kapitan_id = 2 where id = 2;
 Update Teams set kapitan_id = 3 where id = 3;
+Update Teams set kapitan_id = 3 where id = 3;
